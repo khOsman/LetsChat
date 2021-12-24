@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "610890360115",
+    "project_id": "chatapp-aa8dc",
+    "storage_bucket": "chatapp-aa8dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610890360115:android:93c2eb132da786d01c8a46",
+        "android_client_info": {
+          "package_name": "com.osmanayon.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610890360115-1vi9aupsi048u5ch921e2koh6tnmln6n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBR0jpHjg7nIHCx5quNxfvfnBiJpcrxda0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610890360115-1vi9aupsi048u5ch921e2koh6tnmln6n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
