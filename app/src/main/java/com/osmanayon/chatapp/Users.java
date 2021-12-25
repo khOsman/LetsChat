@@ -46,7 +46,6 @@ public class Users extends AppCompatActivity {
         pd.setMessage("Loading...");
         pd.show();
 
-        as.add("Consultant");
 
         String url = "https://chatapp-aa8dc-default-rtdb.firebaseio.com/users.json";
 
@@ -106,17 +105,12 @@ public class Users extends AppCompatActivity {
             noUsersText.setVisibility(View.VISIBLE);
             usersList.setVisibility(View.GONE);
         } else {
-            if (UserDetails.username.equals("Consultant") && UserDetails.password.equals("pawank")) {
-                noUsersText.setVisibility(View.GONE);
-                usersList.setVisibility(View.VISIBLE);
-                usersList.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, al));
 
-            } else {
-                noUsersText.setVisibility(View.GONE);
-                usersList.setVisibility(View.GONE);
-                adminList.setVisibility(View.VISIBLE);
-                adminList.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, as));
-            }
+            noUsersText.setVisibility(View.GONE);
+            usersList.setVisibility(View.VISIBLE);
+            usersList.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, al));
+
+
         }
 
 

@@ -9,11 +9,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,8 +38,8 @@ public class Chat extends AppCompatActivity {
         scrollView = findViewById(R.id.scrollView);
 
         Firebase.setAndroidContext(this);
-        reference1 = new Firebase("https://chatapp-aa8dc-default-rtdb.firebaseio.com/chats/" + UserDetails.username + "_" + UserDetails.chatWith);
-        reference2 = new Firebase("https://chatapp-aa8dc-default-rtdb.firebaseio.com/chats/" + UserDetails.chatWith + "_" + UserDetails.username);
+        reference1 = new Firebase("https://chatapp-aa8dc-default-rtdb.firebaseio.com/" + UserDetails.username + "_" + UserDetails.chatWith);
+        reference2 = new Firebase("https://chatapp-aa8dc-default-rtdb.firebaseio.com/" + UserDetails.chatWith + "_" + UserDetails.username);
 
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,23 +51,28 @@ public class Chat extends AppCompatActivity {
                     map.put("message", messageText);
                     map.put("user", UserDetails.username);
                     reference1.push().setValue(map);
-                    //reference2.push().setValue(map);
+                    reference2.push().setValue(map);
                 }
             }
         });
 
+
+
         reference1.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
                 Map map = dataSnapshot.getValue(Map.class);
                 String message = map.get("message").toString();
                 String userName = map.get("user").toString();
-
+                Toast.makeText(Chat.this,message,Toast.LENGTH_LONG).show();
                 if (userName.equals(UserDetails.username)) {
                     addMessageBox("You:-\n" + message, 1);
                 } else {
                     addMessageBox(UserDetails.chatWith + ":-\n" + message, 2);
                 }
+                
+
             }
 
             @Override
@@ -88,6 +95,7 @@ public class Chat extends AppCompatActivity {
 
             }
         });
+
     }
 
     public void addMessageBox(String message, int type) {
